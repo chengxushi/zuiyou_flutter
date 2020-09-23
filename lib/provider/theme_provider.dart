@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zuiyou_flutter/common/routers/web_page_transitions.dart';
 
-import 'app_color.dart';
+import '../res/app_color.dart';
 
 /// @description
 /// @Created by huang

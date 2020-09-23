@@ -7,7 +7,5 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main(){
   test('方法的测试', (){
-    // ImageFormat v = ImageFormat.gif;
-    // print(v.runtimeType);
   });
 }

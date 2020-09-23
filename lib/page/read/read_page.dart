@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 /// @description
 /// @Created by huang
-/// @Date   2020/9/21
+/// @Date   2020/9/22
 /// @email  a12162266@163.com
 
-class WelcomePage extends StatefulWidget {
+class ReadPage extends StatefulWidget {
   @override
-  WelcomePageState createState() => WelcomePageState();
+  ReadPageState createState() => new ReadPageState();
 }
 
-class WelcomePageState extends State<WelcomePage> {
+class ReadPageState extends State<ReadPage> {
 
   @override
   void initState() {
@@ -24,6 +24,6 @@ class WelcomePageState extends State<WelcomePage> {
   
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold();
   }
 }

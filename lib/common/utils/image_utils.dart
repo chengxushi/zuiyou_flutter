@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 
 class ImageUtils {
   
-  static ImageProvider getAssetImage(String name, {ImageFormat format = ImageFormat.png}) {
-    return AssetImage(getImgPath(name, format: format));
+  static ImageProvider getAssetImage(String image, {ImageFormat format = ImageFormat.png}) {
+    return AssetImage(getImgPath(image, format: format));
   }
   
   static String getImgPath(String name, {ImageFormat format = ImageFormat.png}) {

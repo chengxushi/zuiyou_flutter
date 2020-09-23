@@ -11,14 +11,14 @@ class RouterUtil {
   //跳转
   static void push(BuildContext context, String path, {bool replace = false, bool clearStack = false}){
     unfocus();
-    router.navigateTo(context, path, replace: replace, clearStack: clearStack, transition: TransitionType.native);
+    Routers.router.navigateTo(context, path, replace: replace, clearStack: clearStack, transition: TransitionType.fadeIn);
   }
 
   //带有返回值的跳转
   static void pushResult(BuildContext context, String path, Function(Object) function,
       {bool replace = false, bool clearStack = false}){
     unfocus();
-    router.navigateTo(context, path, replace: replace, clearStack: clearStack, transition: TransitionType.native).then((Object result){
+    Routers.router.navigateTo(context, path, replace: replace, clearStack: clearStack, transition: TransitionType.native).then((Object result){
       // 页面返回result为null
       if (result == null) {
         return;
@@ -35,7 +35,7 @@ class RouterUtil {
     if(result != null){
       Navigator.pop<Object>(context, result);
     } else{
-      router.pop(context);
+      Routers.router.pop(context);
     }
   }
 
