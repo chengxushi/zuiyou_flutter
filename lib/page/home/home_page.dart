@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zuiyou_flutter/common/routers/router_util.dart';
-import 'package:zuiyou_flutter/common/routers/routers.dart';
 import 'package:zuiyou_flutter/common/utils/theme_utils.dart';
+import 'package:zuiyou_flutter/page/channel/channel_page.dart';
 import 'package:zuiyou_flutter/page/home/provider/home_provider.dart';
+import 'package:zuiyou_flutter/page/me/me_page.dart';
+import 'package:zuiyou_flutter/page/msg/msg_page.dart';
+import 'package:zuiyou_flutter/page/publish/publish_page.dart';
 import 'package:zuiyou_flutter/page/read/read_page.dart';
 import 'package:zuiyou_flutter/res/app_color.dart';
 import 'package:zuiyou_flutter/widget/double_tap_exit_app.dart';
@@ -23,7 +25,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   static const double _imageSize = 25.0;
   final PageController _pageController = PageController();
-  HomeProvider _provider = HomeProvider();
+  final HomeProvider _provider = HomeProvider();
   List<Widget> _pageList;
 
   @override
@@ -41,21 +43,21 @@ class HomePageState extends State<HomePage> {
   void initData() {
     _pageList = <Widget>[
       ReadPage(),
-      ReadPage(),
-      ReadPage(),
-      ReadPage(),
-      ReadPage(),
+      ChannelPage(),
+      publishPage(),
+      msgPage(),
+      MePage(),
     ];
   }
   
   Widget _item({@required bool isSelected, String image, Color imageColor = AppColor.app_main, String title,}){
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        LoadAssetImage(isSelected ? image : image+'_selected', width: _imageSize, color: isSelected ? imageColor : Colors.white,),
+      children: <Widget>[
+        LoadAssetImage(isSelected ? image + '_selected' : image, width: _imageSize, color: isSelected ? imageColor : null,),
         Padding(
           padding: const EdgeInsets.only(top: 4),
-          child: Text(title, style: TextStyle(fontSize: 10, color: isSelected ? AppColor.app_main : Colors.white),),
+          child: Text(title, style: TextStyle(fontSize: 10, color: isSelected ? AppColor.app_main : Colors.black),),
         )
       ],
     );
@@ -63,7 +65,7 @@ class HomePageState extends State<HomePage> {
   
   @override
   Widget build(BuildContext context) {
-    final bool isDark = ThemeUtils.isDark(context);
+    // final bool isDark = ThemeUtils.isDark(context);
     return DoubleTapExitApp(
       child: ChangeNotifierProvider<HomeProvider>(
         create: (_) => _provider,
@@ -71,28 +73,47 @@ class HomePageState extends State<HomePage> {
           bottomNavigationBar: Consumer<HomeProvider>(
             builder: (_, HomeProvider provider, __){
               return BottomAppBar(
+                elevation: 10,
                 color: ThemeUtils.getBackgroundColor(context),
                 child: Row(
-                  children: [
-                    GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () => _pageController.jumpToPage(0),
-                      child: _item(isSelected: provider.value == 0, image: 'ic_tab_home', title: '最右'),
+                  children: <Widget>[
+                    Expanded(
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => _pageController.jumpToPage(0),
+                        child: _item(isSelected: provider.value == 0, image: 'ic_tab_home', title: '最右'),
+                      ),
                     ),
-                    GestureDetector(
-                      onTap: () => _pageController.jumpToPage(1),
-                      child: _item(isSelected: provider.value == 1, image: 'ic_tab_channel', title: '发现'),
+                    Expanded(
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => _pageController.jumpToPage(1),
+                        child: _item(isSelected: provider.value == 1, image: 'ic_tab_channel', title: '发现'),
+                      ),
                     ),
-                    FloatingActionButton(
-                      onPressed: () => _pageController.jumpToPage(2),
-                      elevation: 0.0,
-                      mini: true,
-                      child: Icon(Icons.add, size: 20,),
+                    Expanded(
+                      child: FloatingActionButton(
+                        onPressed: () => _pageController.jumpToPage(2),
+                        elevation: 0.0,
+                        mini: true,
+                        child: const Icon(Icons.add, size: 26,),
+                      ),
                     ),
-                    _item(isSelected: provider.value == 3, image: 'ic_tab_msg', title: '消息'),
-                    _item(isSelected: provider.value == 4, image: 'ic_tab_me', title: '我的'),
+                    Expanded(
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => _pageController.jumpToPage(3),
+                        child: _item(isSelected: provider.value == 3, image: 'ic_tab_msg', title: '消息'),
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => _pageController.jumpToPage(4),
+                        child: _item(isSelected: provider.value == 4, image: 'ic_tab_me', title: '我的'),
+                      ),
+                    ),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                 ),
               );
               // return BottomNavigationBar(

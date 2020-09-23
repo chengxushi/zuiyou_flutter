@@ -27,6 +27,7 @@ dependencies:
   dartx: ^0.5.0 #dart的常用类型扩展库  https://pub.dev/packages/dartx
   provider: ^4.3.2 # 状态管理
   flutter_swiper: ^1.1.6 #轮播图
+  shimmer: ^1.1.1 #闪亮效果
 
 dev_dependencies:
   flutter_test:

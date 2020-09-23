@@ -14,10 +14,10 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
   // 透明状态栏
-  if (Platform.isAndroid) {
-    const SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-  }
+  // if (Platform.isAndroid) {
+  //   const SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+  //   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  // }
 }
 
 class MyApp extends StatelessWidget {

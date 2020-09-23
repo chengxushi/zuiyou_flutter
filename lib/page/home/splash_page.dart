@@ -76,7 +76,7 @@ class SplashPageState extends State<SplashPage> {
       color: ThemeUtils.getBackgroundColor(context),
       child: _status == 0 ?
       Column(
-        children:  <Widget>[
+        children:  const <Widget>[
           Expanded(
             child: Center(
               child: Padding(

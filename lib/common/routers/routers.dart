@@ -6,6 +6,7 @@ import 'package:zuiyou_flutter/page/home/splash_page.dart';
 
 import 'not_found_page.dart';
 
+// ignore: avoid_classes_with_only_static_members
 /// @description
 /// @Created by huang
 /// @Date   2020/9/16
