@@ -66,7 +66,7 @@ class Routers {
 
     _listRouter.clear();
     /// 各自路由由各自模块管理，统一在此添加初始化
-//    _listRouter.add();
+   // _listRouter.add();
     /// 初始化路由
     for(final RouterProvider routerProvider in _listRouter){
       routerProvider.initRouter(router);

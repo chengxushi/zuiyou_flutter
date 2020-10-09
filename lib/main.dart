@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:zuiyou_flutter/common/routers/routers.dart';
@@ -24,14 +21,14 @@ class MyApp extends StatelessWidget {
 
   MyApp({this.theme}) {
     Routers.initRoutes();
-    ///调用 BotToastInit
-    BotToastInit();
   }
 
   final ThemeData theme;
   
   @override
   Widget build(BuildContext context) {
+    ///调用 BotToastInit
+    final TransitionBuilder botToastBuilder = BotToastInit();
     return ChangeNotifierProvider<ThemeProvider>(
       create: (_) => ThemeProvider(),
       child: Consumer<ThemeProvider>(
@@ -44,9 +41,9 @@ class MyApp extends StatelessWidget {
             themeMode: provider.getThemeMode(),
             onGenerateRoute: Routers.router.generator, //配置fluro
             builder: (BuildContext context, Widget child) {
+              child = botToastBuilder(context, child);
               /// 保证文字大小不受手机系统设置影响 https://www.kikt.top/posts/flutter/layout/dynamic-text/
               return MediaQuery(
-                // 或者 MediaQueryData.fromWindow(WidgetsBinding.instance.window).copyWith(textScaleFactor: 1.0),
                 data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
                 child: child,
               );

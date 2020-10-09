@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:zuiyou_flutter/common/utils/theme_utils.dart';
@@ -76,14 +74,14 @@ class SkeletonBox extends StatelessWidget {
 
 class SkeletonList extends StatelessWidget {
   
-  const SkeletonList({Key key, this.length: 4}) : super(key: key);
+  const SkeletonList({Key key, this.length = 4}) : super(key: key);
   
   final int length;
   
   @override
   Widget build(BuildContext context) {
-    bool isDark = ThemeUtils.isDark(context);
-    List<Widget> itemList = [];
+    final bool isDark = ThemeUtils.isDark(context);
+    final List<Widget> itemList = [];
     for(int i = 0; i < length; i++){
       itemList.add(SkeletonBox());
     }
@@ -93,8 +91,8 @@ class SkeletonList extends StatelessWidget {
         child: Column(
           children: itemList,
         ),
-        baseColor: isDark ? Colors.grey[700] : Color(0xFFC6C6C6),
-        highlightColor: isDark ? Colors.grey[500] : Colors.grey[800],
+        baseColor: isDark ? Colors.grey[600] : const Color(0xFFE0E1E0),
+        highlightColor: isDark ? const Color(0xFFE0E1E0) : const Color(0xFFF2F2F2),
         period: const Duration(milliseconds: 2000),
       ),
     );

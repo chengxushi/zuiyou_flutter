@@ -54,7 +54,7 @@ class HomePageState extends State<HomePage> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        LoadAssetImage(isSelected ? image + '_selected' : image, width: _imageSize, color: isSelected ? imageColor : null,),
+        LoadAssetImage(image, width: _imageSize, color: isSelected ? imageColor : null,),
         Padding(
           padding: const EdgeInsets.only(top: 4),
           child: Text(title, style: TextStyle(fontSize: 10, color: isSelected ? AppColor.app_main : Colors.black),),

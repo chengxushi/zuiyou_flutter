@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:zuiyou_flutter/common/info/app_info.dart';
 import 'package:zuiyou_flutter/common/routers/router_util.dart';
 import 'package:zuiyou_flutter/common/routers/routers.dart';
 import 'package:zuiyou_flutter/common/utils/image_utils.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:zuiyou_flutter/common/utils/theme_utils.dart';
 import 'package:zuiyou_flutter/widget/load_image.dart';
 
