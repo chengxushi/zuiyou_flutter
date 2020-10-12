@@ -50,14 +50,14 @@ class HomePageState extends State<HomePage> {
     ];
   }
   
-  Widget _item({@required bool isSelected, String image, Color imageColor = AppColor.app_main, String title,}){
+  Widget _item({@required bool isSelected, String image, Color imageColor = AppColor.theme_blue, String title,}){
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         LoadAssetImage(image, width: _imageSize, color: isSelected ? imageColor : null,),
         Padding(
           padding: const EdgeInsets.only(top: 4),
-          child: Text(title, style: TextStyle(fontSize: 10, color: isSelected ? AppColor.app_main : Colors.black),),
+          child: Text(title, style: TextStyle(fontSize: 10, color: isSelected ? AppColor.theme_blue : Colors.black),),
         )
       ],
     );

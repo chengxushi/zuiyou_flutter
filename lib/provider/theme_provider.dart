@@ -46,17 +46,17 @@ class ThemeProvider extends ChangeNotifier {
         errorColor: AppColor.dark_red,
         brightness: Brightness.dark,
         //主题色
-        primaryColor: AppColor.dark_app_main,
-        accentColor: AppColor.dark_app_main,
+        primaryColor: AppColor.dark_theme_blue,
+        accentColor: AppColor.dark_theme_blue,
         // Tab指示器颜色
-        indicatorColor: AppColor.dark_app_main,
+        indicatorColor: AppColor.dark_theme_blue,
         // 页面背景色
         scaffoldBackgroundColor: AppColor.dark_bg_color,
         // 主要用于Material背景色
         canvasColor: AppColor.dark_material_bg,
         // 文字选择色（输入框复制粘贴菜单）
-        textSelectionColor: AppColor.app_main.withAlpha(70),
-        textSelectionHandleColor: AppColor.app_main,
+        textSelectionColor: AppColor.theme_blue.withAlpha(70),
+        textSelectionHandleColor: AppColor.theme_blue,
         textTheme: const TextTheme(
           // TextField输入文字颜色
           subtitle1: TextStyle(fontSize: 14.0, color: AppColor.dark_text, textBaseline: TextBaseline.alphabetic),
@@ -87,17 +87,17 @@ class ThemeProvider extends ChangeNotifier {
         errorColor: AppColor.red,
         brightness: Brightness.light,
         //主题色
-        primaryColor: AppColor.app_main,
-        accentColor: AppColor.app_main,
+        primaryColor: AppColor.theme_blue,
+        accentColor: AppColor.theme_blue,
         // Tab指示器颜色
-        indicatorColor: AppColor.app_main,
+        indicatorColor: AppColor.theme_blue,
         // 页面背景色
         scaffoldBackgroundColor: AppColor.bg_color,
         // 主要用于Material背景色
         canvasColor: AppColor.material_bg,
         // 文字选择色（输入框复制粘贴菜单）
-        textSelectionColor: AppColor.app_main.withAlpha(70),
-        textSelectionHandleColor: AppColor.app_main,
+        textSelectionColor: AppColor.theme_blue.withAlpha(70),
+        textSelectionHandleColor: AppColor.theme_blue,
         textTheme: const TextTheme(
           // TextField输入文字颜色
           subtitle1: TextStyle(fontSize: 14.0, color: AppColor.text, textBaseline: TextBaseline.alphabetic),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:zuiyou_flutter/common/info/app_info.dart';
+import 'package:zuiyou_flutter/common/info/device_info.dart';
 import 'package:zuiyou_flutter/common/routers/router_util.dart';
 import 'package:zuiyou_flutter/common/routers/routers.dart';
 import 'package:zuiyou_flutter/common/utils/image_utils.dart';
@@ -39,6 +40,7 @@ class SplashPageState extends State<SplashPage> {
           precacheImage(ImageUtils.getAssetImage(image, format: ImageFormat.webp), context);
         }
       }
+      DeviceInfo.init(context);
       _initSplash();
     });
   }
