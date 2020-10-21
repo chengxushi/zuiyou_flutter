@@ -23,7 +23,6 @@ class ExpandableText extends StatefulWidget {
 }
 
 class _ExpandableTextState extends State<ExpandableText> {
-  final String hint = '...双击展开';
   bool expand;
 
   @override
@@ -39,9 +38,10 @@ class _ExpandableTextState extends State<ExpandableText> {
   
   @override
   Widget build(BuildContext context) {
+    //使用LayoutBuilder控件延迟加载
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints){
-        if(isExceedMaxLines(widget.text + hint, constraints)) {
+        if(isExceedMaxLines(widget.text, constraints)) {
           return GestureDetector(
             onTap: widget.onTop,
             onDoubleTap: (){
@@ -64,7 +64,7 @@ class _ExpandableTextState extends State<ExpandableText> {
                     maxLines: widget.maxLines,
                     overflow: TextOverflow.ellipsis,
                   ),
-                Text(expand ? '双击收回' : '双击展开', style: const TextStyle(fontSize: 14, color: Colors.grey,),),
+                Text(expand ? '...双击收回' : '...双击展开', style: const TextStyle(fontSize: 14, color: Colors.grey,),),
               ],
             ),
           );
@@ -80,6 +80,7 @@ class _ExpandableTextState extends State<ExpandableText> {
     );
   }
   
+  //判断文本内容是否超过指定的行数
   bool  isExceedMaxLines(String text, BoxConstraints constraints){
     final TextSpan span = TextSpan(text: text, style: widget.style);
     final TextPainter textPainter = TextPainter(text: span, maxLines: widget.maxLines, textDirection: TextDirection.ltr);

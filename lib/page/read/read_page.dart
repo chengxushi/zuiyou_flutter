@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'read_child_page.dart';
+import 'package:zuiyou_flutter/widget/tab_bar_my.dart';
 
 /// @description
 /// @Created by huang
@@ -32,7 +32,11 @@ class ReadPageState extends State<ReadPage> with SingleTickerProviderStateMixin,
   void initData() {
     _tabList = <String>['关注', '话题', '推荐', '视频', '图文', '语玩', '游戏', '汉服'];
     for(int i = 0; i < _tabList.length; i++){
-      _tabViewList.add(ReadChildPage());
+      if(i == 2){
+        _tabViewList.add(ReadChildPage());
+      } else {
+        _tabViewList.add(Center(child: Text(_tabList[i]),));
+      }
     }
     _tabController = TabController(initialIndex: 2, length: _tabList.length, vsync: this);
   }
@@ -54,16 +58,16 @@ class ReadPageState extends State<ReadPage> with SingleTickerProviderStateMixin,
                       tabs: _tabList.map((e) => Tab(text: e,)).toList(),
                       isScrollable: true,
                       controller: _tabController,
-                      labelStyle: TextStyle(fontSize: 17, fontWeight: FontWeight.w600,),
-                      unselectedLabelStyle: TextStyle(fontSize: 17,fontWeight: FontWeight.w600,),
+                      labelStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600,),
+                      unselectedLabelStyle: const TextStyle(fontSize: 17,fontWeight: FontWeight.w600,),
                       labelColor: Colors.blue,
                       unselectedLabelColor: Colors.black,
                       indicatorColor: Colors.transparent,
-                      labelPadding: EdgeInsets.only(left: 8, right: 8),
+                      labelPadding: const EdgeInsets.only(left: 8, right: 8),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 8),
                     child: Icon(Icons.search, size: 24,),
                   ),
                 ],

@@ -1,4 +1,4 @@
-import 'package:fluro/fluro.dart';
+import 'package:fluro/fluro.dart' as fluro;
 import 'package:flutter/material.dart';
 import 'package:zuiyou_flutter/common/routers/router_provider.dart';
 import 'package:zuiyou_flutter/page/home/home_page.dart';
@@ -40,13 +40,13 @@ import 'not_found_page.dart';
 //   }
 // }
 class Routers {
-  static final Router router = Router();
+  static final fluro.Router router = fluro.Router();
   static final List<RouterProvider> _listRouter = <RouterProvider>[];
   static const String home = '/home';
   static const String splash = '/splash';
 
   static void initRoutes(){
-    router.notFoundHandler = Handler(
+    router.notFoundHandler = fluro.Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params){
           debugPrint('找不到路由, 404');
           return NotFoundPage();
@@ -55,12 +55,12 @@ class Routers {
 
     //路由页面配置
     // 第一个参数是路由地址，第二个参数是页面跳转和传参，第三个参数是转场动画
-    router.define(splash, handler: Handler(
+    router.define(splash, handler: fluro.Handler(
       handlerFunc: (BuildContext context, Map<String, List<String>> params){
         return SplashPage();
       },
     ));
-    router.define(home, handler: Handler(
+    router.define(home, handler: fluro.Handler(
       handlerFunc: (_, __) => HomePage(),
     ));
 

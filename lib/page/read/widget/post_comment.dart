@@ -18,6 +18,8 @@ class PostComment extends StatefulWidget {
 }
 
 class PostCommentState extends State<PostComment> {
+  bool isUp = false;
+  bool isDown = false;
   
   @override
   void initState() {
@@ -45,12 +47,40 @@ class PostCommentState extends State<PostComment> {
             children: [
               const LoadImage('ic_comment_god_flag', height: 16, fit: BoxFit.cover,),
               const Expanded(child: SizedBox()),
-              const LoadImage('ic_godreview_up',height: 16,),
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  setState(() {
+                    isUp = !isUp;
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: LoadImage(
+                    isUp ? 'ic_godreview_up_selected' : 'ic_godreview_up',
+                    height: 16,
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Text(widget.comment.likeCount.toString(), style: const TextStyle(color: AppColor.theme_blue),),
               ),
-              const LoadImage('ic_godreview_down',height: 16,),
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  setState(() {
+                    isDown = !isDown;
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: LoadImage(
+                    isDown ? 'ic_godreview_down_selected' : 'ic_godreview_down',
+                    height: 16,
+                  ),
+                ),
+              ),
             ],
           ),
           Padding(

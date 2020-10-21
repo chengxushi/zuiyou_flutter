@@ -23,6 +23,8 @@ class PostItem extends StatefulWidget {
 }
 
 class PostItemState extends State<PostItem> {
+  bool _isLike = false;
+  bool _isHate = false;
   
   @override
   void initState() {
@@ -39,7 +41,15 @@ class PostItemState extends State<PostItem> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10,),
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: BorderDirectional(
+          top: BorderSide(
+            width: 5,
+            color: Colors.grey[200],
+          ),
+        ),
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,15 +168,27 @@ class PostItemState extends State<PostItem> {
                   children: [
                     GestureDetector(
                       onTap: (){
-                    
+                        setState(() {
+                          _isLike = !_isLike;
+                        });
                       },
-                      child: const LoadImage(
-                        'icon_post_like',
+                      child: LoadImage(
+                        _isLike ? 'icon_post_like_hl' : 'icon_post_like',
                         height: 20,
                       ),
                     ),
                     Text(widget.postModel.commentCount.toString(), style: const TextStyle(color: Colors.black87,),),
-                    const LoadImage('icon_post_hate', height: 20,),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _isHate = !_isHate;
+                        });
+                      },
+                      child: LoadImage(
+                        _isHate ? 'icon_post_hate_hl' : 'icon_post_hate',
+                        height: 20,
+                      ),
+                    ),
                   ],
                 ),
               ),

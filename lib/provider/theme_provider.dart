@@ -98,13 +98,13 @@ class ThemeProvider extends ChangeNotifier {
         // 文字选择色（输入框复制粘贴菜单）
         textSelectionColor: AppColor.theme_blue.withAlpha(70),
         textSelectionHandleColor: AppColor.theme_blue,
-        textTheme: const TextTheme(
-          // TextField输入文字颜色
-          subtitle1: TextStyle(fontSize: 14.0, color: AppColor.text, textBaseline: TextBaseline.alphabetic),
-          // Text文字样式
-          bodyText2: TextStyle(fontSize: 14.0, color: AppColor.text, textBaseline: TextBaseline.alphabetic),
-          subtitle2: TextStyle(fontSize: 12.0, color: AppColor.text_gray, fontWeight: FontWeight.normal),
-        ),
+        // textTheme: const TextTheme(
+        //   // TextField输入文字颜色
+        //   subtitle1: TextStyle(fontSize: 14.0, color: AppColor.text, textBaseline: TextBaseline.alphabetic),
+        //   // Text文字样式
+        //   bodyText2: TextStyle(fontSize: 14.0, color: AppColor.text, textBaseline: TextBaseline.alphabetic),
+        //   subtitle2: TextStyle(fontSize: 12.0, color: AppColor.text_gray, fontWeight: FontWeight.normal),
+        // ),
         inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(fontSize: 14.0, color: AppColor.unselected_item_color),
         ),

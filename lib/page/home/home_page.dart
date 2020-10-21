@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_actions/quick_actions.dart';
 import 'package:zuiyou_flutter/common/utils/theme_utils.dart';
 import 'package:zuiyou_flutter/page/channel/channel_page.dart';
 import 'package:zuiyou_flutter/page/home/provider/home_provider.dart';
@@ -31,6 +32,18 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    final QuickActions quickActions = QuickActions();
+    quickActions.initialize((String type) {
+      switch(type){
+        case 'action_one':
+          Navigator.push(context, MaterialPageRoute(builder: (context) => MePage()));
+          break;
+      }
+    });
+    quickActions.setShortcutItems(<ShortcutItem>[
+      const ShortcutItem(type: 'action_one', localizedTitle: 'Action one', icon: 'ic_launcher',),
+      const ShortcutItem(type: 'action_two', localizedTitle: 'Action two', icon: 'ic_launcher',),
+    ]);
     initData();
   }
 

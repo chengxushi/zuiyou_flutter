@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:zuiyou_flutter/common/info/device_info.dart';
 import 'package:zuiyou_flutter/widget/load_image.dart';
+import 'package:zuiyou_flutter/widget/photo_play.dart';
 /// @description
 /// @Created by huang
 /// @Date   2020/10/12
@@ -21,6 +22,8 @@ class PostImage extends StatefulWidget {
 class PostImageState extends State<PostImage> {
   int _imageLength;
   double imageWidth;
+  final List<String> _tagList = <String>[];
+  var s = Random.secure();
   
   @override
   void initState() {
@@ -30,11 +33,6 @@ class PostImageState extends State<PostImage> {
         ((_imageLength == 3 || _imageLength > 4)
             ? 3
             : (_imageLength == 2 || _imageLength == 4) ? 2 : 1.5);
-  }
-  
-  @override
-  void dispose() {
-    super.dispose();
   }
   
   @override
@@ -52,12 +50,25 @@ class PostImageState extends State<PostImage> {
         childAspectRatio: 1,
       ),
       itemBuilder: (BuildContext context, int index){
-        final String heroTag = widget.imageList[index] + Random.secure().toString();
+        
+        final String heroTag = widget.imageList[index] + '随机数: ${s.nextDouble()}';
+        _tagList.add(heroTag);
         return ClipRRect(
           borderRadius: BorderRadius.circular(4),
           child: GestureDetector(
             onTap: (){
-            
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  opaque: false,
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      PhotoPlay(
+                    pics: widget.imageList,
+                    tagList: _tagList,
+                    index: index,
+                  ),
+                ),
+              );
             },
             child: Hero(
               tag: heroTag,

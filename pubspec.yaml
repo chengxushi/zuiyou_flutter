@@ -23,12 +23,15 @@ dependencies:
   flutter_easyrefresh: ^2.1.5 #下拉刷新 https://github.com/xuelongqy/flutter_easyrefresh/blob/v2/README.md
   path_provider: ^1.6.11 #获取App文件夹
   flustars: ^0.3.3 #Flutter 常用工具类库 https://pub.flutter-io.cn/packages/flustars
-  extended_image: ^1.1.0 #图片工具(支持缓存网络图片等)
+  extended_image: ^1.2.0 #图片工具(支持缓存网络图片等)
   dartx: ^0.5.0 #dart的常用类型扩展库  https://pub.dev/packages/dartx
   provider: ^4.3.2 # 状态管理
   flutter_swiper: ^1.1.6 #轮播图
   shimmer: ^1.1.1 #闪亮效果
   flare_flutter: ^1.5.4 #flare动画
+  quick_actions: ^0.4.0+10 #外部快捷按钮
+  loading_more_list: ^3.1.1 #自动上拉加载的列表
+  pull_to_refresh_notification: ^1.1.2 #下拉刷新
 
 dev_dependencies:
   flutter_test:

@@ -35,7 +35,7 @@ class SkeletonBox extends StatelessWidget {
                     Container(
                       height: height,
                       width: 60,
-                      margin: EdgeInsets.only(bottom: 12),
+                      margin: const EdgeInsets.only(bottom: 12),
                       decoration: boxDecoration,
                     ),
                     Container(
@@ -51,19 +51,19 @@ class SkeletonBox extends StatelessWidget {
           Container(
             height: height,
             width: double.infinity,
-            margin: EdgeInsets.only(top: 12),
+            margin: const EdgeInsets.only(top: 12),
             decoration: boxDecoration,
           ),
           Container(
             height: height,
             width: 200,
-            margin: EdgeInsets.only(top: 12),
+            margin: const EdgeInsets.only(top: 12),
             decoration: boxDecoration,
           ),
           Container(
             height: 100,
             width: double.infinity,
-            margin: EdgeInsets.only(top: 16, bottom: 24),
+            margin: const EdgeInsets.only(top: 16, bottom: 24),
             decoration: boxDecoration,
           ),
         ],

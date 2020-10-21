@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             title: 'Flutter最右',
             home: SplashPage(),
             theme: theme ?? provider.getTheme(),
-            darkTheme: provider.getTheme(isDarkMode: true),
+            darkTheme: provider.getTheme(isDarkMode: false),
             themeMode: provider.getThemeMode(),
             onGenerateRoute: Routers.router.generator, //配置fluro
             builder: (BuildContext context, Widget child) {
