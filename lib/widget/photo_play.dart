@@ -40,7 +40,10 @@ class PhotoPlayState extends State<PhotoPlay> {
   Widget build(BuildContext context) {
     return ExtendedImageSlidePage(
       slideAxis: SlideAxis.both,
-      slideType: SlideType.onlyImage,
+      slideType: SlideType.wholePage,
+      slidePageBackgroundHandler: (Offset offset, Size pageSize){
+      
+      },
       child: ExtendedImageGesturePageView.builder(
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(

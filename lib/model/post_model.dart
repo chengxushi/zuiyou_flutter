@@ -1,10 +1,10 @@
 import 'dart:convert' show json;
 
 import 'package:zuiyou_flutter/model/asT.dart';
+import 'package:zuiyou_flutter/model/video_model.dart';
 
 /// @description
 /// @Date  2020-10-09
-
 class PostModel {
   PostModel({
     this.head,
@@ -20,14 +20,11 @@ class PostModel {
     this.commentCount,
     this.likeCount,
   });
-
-
-  factory PostModel.fromJson(Map<String, dynamic> jsonRes) {
-    if (jsonRes == null) {
-      return null;
-    }
-    final List<String> images = jsonRes['images'] is List ? <String>[] : null;
-    if (images != null) {
+  
+  
+  factory PostModel.fromJson(Map<String, dynamic> jsonRes){ if(jsonRes == null){return null;}
+  final List<String> images = jsonRes['images'] is List ? <String>[]: null;
+  if(images != null) {
       for (final dynamic item in jsonRes['images']) {
         if (item != null) {
           images.add(asT<String>(item));
@@ -35,40 +32,36 @@ class PostModel {
       }
     }
 
-    final List<String> videos = jsonRes['videos'] is List ? <String>[] : null;
-    if (videos != null) {
+  final List<VideoModel> videos = jsonRes['videos'] is List ? <VideoModel>[]: null;
+  if(videos!=null) {
       for (final dynamic item in jsonRes['videos']) {
         if (item != null) {
-          videos.add(asT<String>(item));
+          videos.add(VideoModel.fromJson(asT<Map<String, dynamic>>(item)));
         }
       }
     }
-
-    return PostModel(
-      head: asT<String>(jsonRes['head']),
-      nickname: asT<String>(jsonRes['nickname']),
-      attention: asT<bool>(jsonRes['attention']),
-      identityTag: asT<String>(jsonRes['identityTag']),
-      title: asT<String>(jsonRes['title']),
-      images: images,
-      videos: videos,
-      label: asT<String>(jsonRes['label']),
-      topComment:
-          TopComment.fromJson(asT<Map<String, dynamic>>(jsonRes['topComment'])),
-      transpondCount: asT<int>(jsonRes['transpondCount']),
-      commentCount: asT<int>(jsonRes['commentCount']),
-      likeCount: asT<int>(jsonRes['likeCount']),
-    );
-  }
-
+  
+  return PostModel(head : asT<String>(jsonRes['head']),
+    nickname : asT<String>(jsonRes['nickname']),
+    attention : asT<bool>(jsonRes['attention']),
+    identityTag : asT<String>(jsonRes['identityTag']),
+    title : asT<String>(jsonRes['title']),
+    images:images,
+    videos:videos,
+    label : asT<String>(jsonRes['label']),
+    topComment : TopComment.fromJson(asT<Map<String, dynamic>>(jsonRes['topComment'])),
+    transpondCount : asT<int>(jsonRes['transpondCount']),
+    commentCount : asT<int>(jsonRes['commentCount']),
+    likeCount : asT<int>(jsonRes['likeCount']),
+  );}
+  
   String head; //头像
-  ///昵称
-  String nickname;
+  String nickname; //昵称
   bool attention; //是否关注
   String identityTag; //身份标志
   String title; //标题
   List<String> images; //图片列表
-  List<String> videos; //视频列表
+  List<VideoModel> videos; //视频列表
   String label; //标签
   TopComment topComment; //评论详情
   int transpondCount; //转发数量
@@ -95,6 +88,7 @@ class PostModel {
     return json.encode(this);
   }
 }
+
 class TopComment {
   TopComment({
     this.likeCount,
@@ -110,13 +104,16 @@ class TopComment {
   }
   
   
-  final List<String> videos = jsonRes['videos'] is List ? <String>[]: null;
-  if(videos!=null) {
-    for (final dynamic item in jsonRes['videos']) { if (item != null) { videos.add(asT<String>(item));  } }
-  }
-  
-  
-  return TopComment(likeCount : asT<int>(jsonRes['likeCount']),
+  final List<VideoModel> videos = jsonRes['videos'] is List ? <VideoModel>[]: null;
+  if (videos != null) {
+      for (final dynamic item in jsonRes['videos']) {
+        if (item != null) {
+          videos.add(VideoModel.fromJson(asT<Map<String, dynamic>>(item)));
+        }
+      }
+    }
+
+    return TopComment(likeCount : asT<int>(jsonRes['likeCount']),
     content : asT<String>(jsonRes['content']),
     images:images,
     videos:videos,
@@ -125,7 +122,7 @@ class TopComment {
   int likeCount;
   String content;
   List<String> images;
-  List<String> videos;
+  List<VideoModel> videos;
   
   Map<String, dynamic> toJson() => <String, dynamic>{
     'likeCount': likeCount,

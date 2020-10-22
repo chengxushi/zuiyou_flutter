@@ -123,7 +123,8 @@ class PostItemState extends State<PostItem> {
               ),
             ),
           ),
-          if(widget.postModel.images.isNotEmpty) PostImage(imageList: widget.postModel.images),
+          if(widget.postModel.images?.isNotEmpty ?? false) PostImage(imageList: widget.postModel.images),
+          if(widget.postModel.videos?.isNotEmpty ?? false) PostImage(imageList: widget.postModel.images),
           InputChip(
             onPressed: (){},
             backgroundColor: const Color(0xFFF0F9FE),
