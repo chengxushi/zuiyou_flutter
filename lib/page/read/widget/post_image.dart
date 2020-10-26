@@ -12,9 +12,10 @@ import 'package:zuiyou_flutter/widget/photo_play.dart';
 
 class PostImage extends StatefulWidget {
   
-  const PostImage({Key key, @required this.imageList}) : super(key: key);
+  const PostImage({Key key, @required this.imageList, this.indexLocation}) : super(key: key);
   
   final List<String> imageList;
+  final int indexLocation;
   @override
   PostImageState createState() => PostImageState();
 }
@@ -50,8 +51,9 @@ class PostImageState extends State<PostImage> {
         childAspectRatio: 1,
       ),
       itemBuilder: (BuildContext context, int index){
-        
-        final String heroTag = widget.imageList[index] + '随机数: ${s.nextDouble()}';
+        // final String heroTag = widget.imageList[index] + '随机数: ${s.nextDouble()}';
+        final String heroTag = widget.imageList[index] + '$index${widget.indexLocation}';
+        // print(heroTag);
         _tagList.add(heroTag);
         return ClipRRect(
           borderRadius: BorderRadius.circular(4),

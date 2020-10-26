@@ -13,7 +13,9 @@ class ImageHeader extends Header{
     float: false,
     extent: 80.0,
     triggerDistance: 80.0,
-    completeDuration: Duration(milliseconds: 50,),
+    completeDuration: completeDuration == null
+        ? Duration(milliseconds: 1000,)
+        : completeDuration + Duration(milliseconds: 1000,),
     enableInfiniteRefresh: false,
     enableHapticFeedback: enableHapticFeedback,
   );
@@ -102,10 +104,10 @@ class ImageHeaderWidgetState extends State<ImageHeaderWidget> with TickerProvide
   
   @override
   Widget build(BuildContext context) {
-    print(_refreshState);
+    // print('$_refreshState + $_pulledExtent');
     if(!_startAn){
-      if(_refreshState == RefreshMode. armed || _refreshState == RefreshMode.refresh){
-        print(111111111);
+      if(_refreshState == RefreshMode. armed || _refreshState == RefreshMode.refresh || _pulledExtent > _riggerPullDistance){
+        print('开始动画');
         //启动动画(正向执行)
         logoController.addListener(_listtener);
         animation.addStatusListener(_statusListener1);
@@ -115,8 +117,8 @@ class ImageHeaderWidgetState extends State<ImageHeaderWidget> with TickerProvide
         _startAn = true;
       }
     } else {
-      if(_refreshState == RefreshMode.refreshed){
-        print(222222222222);
+      if(_refreshState == RefreshMode.inactive && _pulledExtent == 0.0){
+        print('移除动画');
         logoController.removeListener(_listtener);
         animation.removeStatusListener(_statusListener1);
         logoAnimation.removeStatusListener(_statusListener2);

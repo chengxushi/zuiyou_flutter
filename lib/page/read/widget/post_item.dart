@@ -4,6 +4,7 @@ import 'package:zuiyou_flutter/common/utils/image_utils.dart';
 import 'package:zuiyou_flutter/model/post_model.dart';
 import 'package:zuiyou_flutter/page/read/widget/post_comment.dart';
 import 'package:zuiyou_flutter/page/read/widget/post_image.dart';
+import 'package:zuiyou_flutter/page/read/widget/post_video.dart';
 import 'package:zuiyou_flutter/res/app_color.dart';
 import 'package:zuiyou_flutter/widget/button_border.dart';
 import 'package:zuiyou_flutter/widget/load_image.dart';
@@ -15,9 +16,10 @@ import 'package:zuiyou_flutter/widget/load_image.dart';
 
 class PostItem extends StatefulWidget {
   
-  const PostItem({Key key, @required this.postModel}) : super(key: key);
+  const PostItem({Key key, @required this.postModel, this.indexLocation}) : super(key: key);
   
   final PostModel postModel;
+  final int indexLocation;
   @override
   PostItemState createState() => PostItemState();
 }
@@ -29,7 +31,6 @@ class PostItemState extends State<PostItem> {
   @override
   void initState() {
     super.initState();
-    
   }
 
   @override
@@ -123,8 +124,8 @@ class PostItemState extends State<PostItem> {
               ),
             ),
           ),
-          if(widget.postModel.images?.isNotEmpty ?? false) PostImage(imageList: widget.postModel.images),
-          if(widget.postModel.videos?.isNotEmpty ?? false) PostImage(imageList: widget.postModel.images),
+          if(widget.postModel?.images?.isNotEmpty ?? false) PostImage(imageList: widget.postModel.images, indexLocation: widget.indexLocation,),
+          if(widget.postModel?.videos?.isNotEmpty ?? false) PostVideo(videoList: widget.postModel.videos, indexLocation: widget.indexLocation,),
           InputChip(
             onPressed: (){},
             backgroundColor: const Color(0xFFF0F9FE),

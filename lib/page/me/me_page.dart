@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zuiyou_flutter/model/video_model.dart';
 import 'package:zuiyou_flutter/page/me/provider/me_provider.dart';
+import 'package:zuiyou_flutter/page/read/widget/hero_my.dart';
+import 'package:zuiyou_flutter/page/read/widget/post_video.dart';
+import 'package:zuiyou_flutter/page/read/widget/post_video_demo.dart';
 import 'package:zuiyou_flutter/widget/load_image.dart';
 
 /// @description
@@ -73,13 +77,18 @@ class MePageState extends State<MePage> with AutomaticKeepAliveClientMixin{
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.white, width: 1),
-                                    borderRadius: BorderRadius.circular(36),
-                                  ),
-                                  child: ClipOval(
-                                    child: LoadImage(context.select((MeProvider value) => value.avatar), width: 70, height: 70, ),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => PostVideoDemo()));
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white, width: 1),
+                                      borderRadius: BorderRadius.circular(36),
+                                    ),
+                                    child: ClipOval(
+                                      child: LoadImage(context.select((MeProvider value) => value.avatar), width: 70, height: 70, ),
+                                    ),
                                   ),
                                 ),
                                 const Expanded(child: SizedBox(),),

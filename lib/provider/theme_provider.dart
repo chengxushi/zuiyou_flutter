@@ -45,6 +45,7 @@ class ThemeProvider extends ChangeNotifier {
       return ThemeData(
         errorColor: AppColor.dark_red,
         brightness: Brightness.dark,
+        dialogBackgroundColor: Colors.black,
         //主题色
         primaryColor: AppColor.dark_theme_blue,
         accentColor: AppColor.dark_theme_blue,
@@ -86,6 +87,7 @@ class ThemeProvider extends ChangeNotifier {
       return ThemeData(
         errorColor: AppColor.red,
         brightness: Brightness.light,
+        dialogBackgroundColor: Colors.black,
         //主题色
         primaryColor: AppColor.theme_blue,
         accentColor: AppColor.theme_blue,
